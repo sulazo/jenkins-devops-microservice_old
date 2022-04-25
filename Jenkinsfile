@@ -13,7 +13,7 @@ pipeline{
         stage('Continuous Download'){
 			steps{
 				sh 'mvn --version'
-				sh "docker version"
+				// sh "docker version"
               echo "Download"
 			  echo "PATH -$PATH"
 			  echo "BUILD_NUMBER - $env.BUILD_NUMBER"

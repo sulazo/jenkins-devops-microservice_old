@@ -32,4 +32,18 @@ pipeline{
 
         }
     }
+post{
+	always{
+		echo "I run always"
+	}
+	success{
+
+    echo "i run when successful"
+	}
+	failure{
+	echo "failed"
+	}
+}
+
+
 }

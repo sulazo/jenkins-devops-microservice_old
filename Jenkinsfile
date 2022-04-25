@@ -2,19 +2,19 @@ pipeline{
     agent any
     stages{
 
-        stage(Continuous Download){
+        stage('Continuous Download'){
             echo "Download"
         }
-        stage(Continuous Build){
+        stage('Continuous Build'){
             echo "Build"
 
         }
-        stage(Continuous Deploy){
+        stage('Continuous Deploy'){
             echo "Deploy"
 
         }
-        stage(Continuous Delivery){
-            echo "Delivey"
+        stage('Continuous Delivery'){
+            echo "Delivery"
 
         }
     }

@@ -3,9 +3,9 @@ pipeline{
 	//u can use node:13.8 etc
     agent any
 	environment {
-		dockerHome = tool "myDocker"
-		mavenHome  = tool "myMaven"
-		PATH ="$dockerHome/bin:$mavenHome/bin:PATH"
+		dockerHome = tool 'myDocker'
+		mavenHome  = tool 'myMaven'
+		PATH ="$dockerHome/bin:$mavenHome/bin:$PATH"
 	}
     stages{
 

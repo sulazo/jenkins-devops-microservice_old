@@ -1,4 +1,5 @@
 pipeline{
+	//agent{docker{image 'maven:3.6.3}}  ---means you want to build inside a Maven image,jenkins will pull image and run the build inside it
     agent any
     stages{
 

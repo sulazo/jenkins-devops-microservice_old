@@ -2,12 +2,17 @@ pipeline{
 	//agent{docker{image 'maven:3.6.3}}  ---means you want to build inside a Maven image,jenkins will pull image and run the build inside it
 	//u can use node:13.8 etc
     agent any
+	environment {
+		dockerHome = tool "myDocker"
+		mavenHome  = tool "myMaven"
+		PATH ="$dockerHome/bin:$mavenHome/bin:PATH"
+	}
     stages{
 
         stage('Continuous Download'){
 			steps{
-				//sh 'mvn --version'
-				// sh "node --version"
+				sh 'mvn --version'
+				sh "docker version"
               echo "Download"
 			  echo "PATH -$PATH"
 			  echo "BUILD_NUMBER - $env.BUILD_NUMBER"

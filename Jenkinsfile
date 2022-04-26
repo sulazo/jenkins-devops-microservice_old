@@ -23,15 +23,7 @@ pipeline{
 			  echo "BUILD-URL -$env.BUILD_URL"
 
 			}
-            // stage('Test'){
-		   // 	steps{
-
-           //     sh "mvn test"
-
-		   // 	}
-
-          // }}
-
+            
     stage('Package'){
 
 		steps{
@@ -62,7 +54,7 @@ pipeline{
 			   	 dockerImage.push('latest');
 
 			   }
-			   
+			
 
 		   }
 
@@ -70,18 +62,5 @@ pipeline{
 
         }
     }
-// post{
-// 	always{
-// 		echo "I run always"
-// 	}
-// 	success{
-
-//     echo "i run when successful"
-// 	}
-// 	failure{
-// 	echo "failed"
-// 	}
-// }
-
-
+	
 }

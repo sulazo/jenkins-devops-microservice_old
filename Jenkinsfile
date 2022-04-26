@@ -24,41 +24,42 @@ pipeline{
 
 			}
         }
-        stage('Continuous Build'){
+        stage('Compile'){
 			steps{
-            echo "Build"
+            sh "mvn clean compile"
 
 			}
 
         }
-        stage('Continuous Deploy'){
+        stage('Test'){
 			steps{
 
-            echo "Deploy"
+            sh "mvn test"
 
 			}
 
         }
-        stage('Continuous Delivery'){
-			steps{
-            echo "Delivery"
+       
+		//  stage('Build Docker Image'){
+		// 	steps{
+        //     echo "Delivery"
 
-			}
+		// 	}
 
-        }
+        // }
     }
-post{
-	always{
-		echo "I run always"
-	}
-	success{
+// post{
+// 	always{
+// 		echo "I run always"
+// 	}
+// 	success{
 
-    echo "i run when successful"
-	}
-	failure{
-	echo "failed"
-	}
-}
+//     echo "i run when successful"
+// 	}
+// 	failure{
+// 	echo "failed"
+// 	}
+// }
 
 
 }

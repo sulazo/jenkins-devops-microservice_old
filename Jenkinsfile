@@ -23,37 +23,52 @@ pipeline{
 			  echo "BUILD-URL -$env.BUILD_URL"
 
 			}
-        }
-        stage('Compile'){
-			steps{
-            sh "mvn clean compile"
+            // stage('Test'){
+		   // 	steps{
 
-			}
+           //     sh "mvn test"
 
-        }
-        stage('Test'){
-			steps{
+		   // 	}
 
-            sh "mvn test"
+          // }}
+
+    stage('Package'){
+
+		steps{
+            sh "mvn package"
 
 			}
 
         }
        
+       
 		 stage('Build Docker Image'){
+
 			steps{
-            "docker build -t shokunbi/docker-image:$env.BUILD_TAG"
+           // "docker build -t shokunbi/docker-image:$env.BUILD_TAG"
+		   script{
+			   dockerImage=docker.build{"shokunbi/docker-image:$env.BUILD_TAG"}
+		   }
 
 			}
 
         }
-		//  stage('Push Docker Image'){
-		// 	steps{
-        //     echo "Delivery"
 
-		// 	}
+	   stage('Push Docker Image'){
+		   steps{
+           script{
+			   docker.withRegistry('','dockerhub') {
+				 dockerImage.push();
+			   	 dockerImage.push('latest');
 
-        // }
+			   }
+			   
+
+		   }
+
+			}
+
+        }
     }
 // post{
 // 	always{

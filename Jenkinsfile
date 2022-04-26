@@ -40,7 +40,14 @@ pipeline{
 
         }
        
-		//  stage('Build Docker Image'){
+		 stage('Build Docker Image'){
+			steps{
+            "docker build -t shokunbi/docker-image:$env.BUILD_TAG"
+
+			}
+
+        }
+		//  stage('Push Docker Image'){
 		// 	steps{
         //     echo "Delivery"
 

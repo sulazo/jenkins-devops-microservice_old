@@ -22,9 +22,10 @@ pipeline{
 			  echo "BUILD_TAG - $env.BUILD_TAG"
 			  echo "BUILD-URL -$env.BUILD_URL"
 
-			}
+		    }
+		}
             
-    stage('Package'){
+       stage('Package'){
 
 		steps{
             sh "mvn package"
@@ -34,7 +35,7 @@ pipeline{
         }
        
        
-		 stage('Build Docker Image'){
+	 stage('Build Docker Image'){
 
 			steps{
            // "docker build -t shokunbi/docker-image:$env.BUILD_TAG"
@@ -63,5 +64,4 @@ pipeline{
         }
     }
 	
-}
 }
